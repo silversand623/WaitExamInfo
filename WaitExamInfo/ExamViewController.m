@@ -56,7 +56,7 @@
                                              selector:@selector(clearData)
                                                  name:@"clearData"
                                                object:nil];
-    
+    _sChanged = @"未知";
 }
 
 - (void)applicationWillEnterForeground {
@@ -163,7 +163,7 @@
 
 -(void) getExamState
 {
-    NSLog(@"start get exam=====");
+    //NSLog(@"start get exam=====");
     
     
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
@@ -241,7 +241,7 @@
         [_curTime setStartValue:(hour*60*60+minute*60+second)*1000];
         [_curTime start];
        NSLog(@"start total time%@=====",Station.SystemTime);
-        _sChanged = @"未知";
+        //_sChanged = @"未知";
         [[self examSubject] setText:[Station.Curriculum stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         [[self examContent] setText:[Station.Content stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         //NSString *str = [Station.Content stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -288,11 +288,11 @@
                                                   
                                                   UserInfo* Info = [RMMapper objectWithClass:[UserInfo class]
                                                                               fromDictionary:obj];
-                                                  [[self curStudent] setText:Info.StuExamNumber];
+                                                  [[self curStudent] setText:Info.UName];
                                                   //[[self curStudent] setText:[NSString stringWithFormat:@"考号: %@",Info.StuExamNumber]];
                                                   //[[self stuName] setText:[NSString stringWithFormat:@"姓名: %@",Info.UName]];
                                                   [[self examStatus] setText:Info.StuState];
-                                                  [[self nextStation] setText:Info.NextESName];
+                                                  [[self nextStation] setText:[Info.NextESName stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                                                   //[[self nextStudent] setText:Info.NextStuExamNumber];
                                                   //[[self nextStudent] setText:[NSString stringWithFormat:@"考号: %@",Info.NextStuExamNumber]];
                                                   //[[self nextName] setText:[NSString stringWithFormat:@"姓名: %@",Info.NextUName]];
@@ -302,7 +302,7 @@
                                                   id obj = [self parentViewController];
                                                   ViewController *myView = (ViewController*)obj;
                                                   
-                                                  [[myView nextStudent] setText:Info.NextStuExamNumber];
+                                                  [[myView nextStudent] setText:[Info.NextUName stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
                                                   
                                                   NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
                                                   NSString *BaseUrl=[defaults objectForKey:@"IPConfig"];
@@ -346,9 +346,11 @@
                                                       
                                                   }
                                                   
+                                                  NSLog(@"清除图片qianqianqianqian===%@====%@===",_sChanged,Info.StuState);
+                                                  
                                                   if (![_sChanged isEqualToString:Info.StuState]) {
                                                       _sChanged = Info.StuState;
-                                                      NSLog(@"%@=======",_sChanged);
+                                                      NSLog(@"清除图片===%@====%@===",_sChanged,Info.StuState);
                                                       bChanged = YES;
                                                       if ([Info.StuState isEqualToString:@"考试中"]) {
                                                           NSString *path = [[NSBundle mainBundle] pathForResource:@"studentphoto" ofType:@"jpg"];

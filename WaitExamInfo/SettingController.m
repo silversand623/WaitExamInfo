@@ -107,17 +107,17 @@
                                           ////
                                       }else
                                       {
-                                          NSLog(@"jsonError:%@",jsonError);
-                                          UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"json格式错误" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                                          [alert show];
+                                          //NSLog(@"jsonError:%@",jsonError);
+                                          //UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"json格式错误" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                          //[alert show];
                                       }
                                       
                                   }else
                                   {
                                       //[HUD hide:YES];
-                                      UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"网络连接错误" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                                      [alert show];
-                                      NSLog(@"error:%@",error);
+                                      //UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"网络连接错误" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                      //[alert show];
+                                      //NSLog(@"error:%@",error);
                                   }
                                   
                               }];
