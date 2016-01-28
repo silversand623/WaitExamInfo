@@ -52,6 +52,11 @@
     [self getRoomInfo];
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.comView closeTableView];
+}
+
 -(void) getRoomInfo
 {
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];

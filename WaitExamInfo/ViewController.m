@@ -168,27 +168,40 @@
                                            id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
                                            if (!jsonError) {
                                                ///
-                                               NSString *str = [obj objectForKey:@"result"];
-                                               if (str != nil) {
-                                                   //int nResult = [self dealError:str];
-                                                   //if (nResult == 1) {
+                                               NSArray *keys = [obj allKeys];
+                                               for (NSString *key in keys) {
+                                                   if ([key isEqualToString:@"IsSave"]) {
+                                                       UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据成功" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                       [alert show];
+                                                   } else if ([key isEqualToString:@"hasPhoto"])
+                                                   {
+                                                       UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"已存在一张图片" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                       [alert show];
                                                        
-                                                   
-                                                   //}
+                                                   } else if ([key isEqualToString:@"result"])
+                                                   {
+                                                       UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                       [alert show];
+                                                   } else
+                                                   {
+                                                       UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                                       [alert show];
+                                                   }
                                                }
+                                               
                                                
                                                ////
                                            }else
                                            {
                                                NSLog(@"jsonError:%@",jsonError);
-                                               //UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"json格式错误" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                                               //[alert show];
+                                               UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"json格式错误" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                               [alert show];
                                            }
                                            
                                        }else
                                        {
-                                           //UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"网络连接错误" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                                           //[alert show];
+                                           UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"网络连接错误" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                           [alert show];
                                            NSLog(@"error:%@",error);
                                        }
                                        

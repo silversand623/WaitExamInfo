@@ -59,8 +59,10 @@
 - (void)closeTableView
 {
     if (showList) {
-        self.hidden = YES;
-        NSLog(@"在选择状态");
+        [self.dropTableView setHidden:YES];
+         [_dropTableView removeFromSuperview];
+         showList = NO;
+         
     }
 }
 
