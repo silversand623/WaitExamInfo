@@ -10,6 +10,7 @@
 
 @interface StationInfo : NSObject
 
+@property (strong,nonatomic) NSString *result;
 @property (strong,nonatomic) NSString *ExamName;
 @property (strong,nonatomic) NSString *Curriculum;
 @property (strong,nonatomic) NSString *Content;

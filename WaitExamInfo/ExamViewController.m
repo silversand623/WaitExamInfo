@@ -20,7 +20,7 @@
 
 @implementation ExamViewController
 #define ROWHEIGHT 60
-#define FONTSIZE 38
+#define FONTSIZE 32
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -149,7 +149,7 @@
 -(void)checkExam
 {
     _nCount++;
-    if ((_nCount%60) <= 5 || (_nCount%60) >=55) {
+    if ((_nCount%30) <= 5 || (_nCount%30) >=25) {
         _myTag = NO;
         
     }else
@@ -158,6 +158,7 @@
     }
     if (_myTag==NO) {
         [self getExamState];
+        
     }
 }
 
@@ -188,11 +189,13 @@
                                       id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
                                       if (!jsonError) {
                                           ///
-                                          NSLog(@"start get exam1111 ok=====");
+                                          
                                           NSString *state = [obj objectForKey:@"UpdateState"];
-                                          if ([state isEqualToString:@"1"] ) {
+                                          NSLog(@"start get exam1111=====%@",state);
+                                          //if ([state isEqualToString:@"1"] ) {
+                                              NSLog(@"start get getUserInfo ok=====");
                                               [self getUserInfo];
-                                          }
+                                          //}
                                           
                                           
                                           ////
@@ -278,7 +281,7 @@
                                           
                                         
                                         NSString *str = [obj objectForKey:@"result"];
-                                          if (str != nil) {
+                                              if (str != nil) {
                                               int nResult = [str integerValue];
                                               if (nResult == 1) {
                                                   
@@ -325,32 +328,32 @@
                                                   
                                                   _myTag = YES;
                                                   
-                                                  int nSec = 0;
-                                                  int nSecExam = 0;
-                                                  int nSecScore = 0;
+                                                  double nSec = 0.0f;
+                                                  double nSecExam = 0.0f;
+                                                  double nSecScore = 0.0f;
                                                   
                                                   
                                                   
-                                                  [[self examTime] setText:[NSString stringWithFormat:@"%@--%@",[Info.StuStartTime substringToIndex:5],[Info.StuEndTime substringToIndex:5]]];
+                                                  [[self examTime] setText:[NSString stringWithFormat:@"%@--%@",Info.StuStartTime,Info.StuEndTime]];
                                                   BOOL bChanged = NO;
                                                   
                                                   if ([Info.StuState isEqualToString:@"评分中"]) {
                                                       NSLog(@"start pingfenzhong====");
-                                                      nSecScore = [Station.StationScoreTime intValue];
+                                                      nSecScore = [Station.StationScoreTime doubleValue];
                                                       nSec=nSecScore;
                                                       
                                                   }
                                                   if ([Info.StuState isEqualToString:@"考试中"]) {
-                                                      nSecExam = [Station.StationExamTime intValue];
+                                                      nSecExam = [Station.StationExamTime doubleValue];
                                                       nSec = nSecExam;
                                                       
                                                   }
                                                   
-                                                  NSLog(@"清除图片qianqianqianqian===%@====%@===",_sChanged,Info.StuState);
+                                                  //NSLog(@"清除图片qianqianqianqian===%@====%@===",_sChanged,Info.StuState);
                                                   
                                                   if (![_sChanged isEqualToString:Info.StuState]) {
                                                       _sChanged = Info.StuState;
-                                                      NSLog(@"清除图片===%@====%@===",_sChanged,Info.StuState);
+                                                      //NSLog(@"清除图片===%@====%@===",_sChanged,Info.StuState);
                                                       bChanged = YES;
                                                       if ([Info.StuState isEqualToString:@"考试中"]) {
                                                           NSString *path = [[NSBundle mainBundle] pathForResource:@"studentphoto" ofType:@"jpg"];
@@ -374,19 +377,20 @@
                                                       
                                                       NSInteger minute = [comps minute];
                                                       
-                                                      NSInteger second = [comps second];
+                                                      double second = [comps second];
                                                       
                                                       double dInterval = [_curTime currentValue]/1000;
                                                       BOOL bFreshTag = YES;
                                                       NSLog(@"time interval is ======%f",dInterval);
                                                       if (dInterval > 0.1) {
                                                           if (nSecExam > 0) {
-                                                              second = nSecExam*60;
+                                                              second = nSecExam*60+second;
                                                           }
                                                           if (nSecScore > 0) {
-                                                              second = nSecScore*60+[Station.StationExamTime intValue]*60;
+                                                              second = nSecScore*60+[Station.StationExamTime doubleValue]*60+second;
                                                           }
-                                                          nSec = abs((hour*60*60+minute*60+second)-dInterval);
+                                                          //NSLog(@"second is  ======%d",second);
+                                                          nSec = fabs((hour*60*60+minute*60+second)-dInterval);
                                                           if (nSecExam > 0) {
                                                               if (nSec > (nSecExam*60+5)) {
                                                                   bFreshTag = NO;
