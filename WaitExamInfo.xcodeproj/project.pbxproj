@@ -79,6 +79,7 @@
 		3CBBD5201A42C5A9007104A7 /* ComboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBBD51F1A42C5A9007104A7 /* ComboxView.m */; };
 		3CBBD5231A42C7EA007104A7 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CBBD5221A42C7EA007104A7 /* SettingController.m */; };
 		3CBC08DD1A11FC80006575A7 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08DC1A11FC80006575A7 /* back.png */; };
+		3CD4A68B1CE4561C0029CE2C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4A68A1CE4561C0029CE2C /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,8 @@
 		3CBBD5211A42C7EA007104A7 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
 		3CBBD5221A42C7EA007104A7 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 		3CBC08DC1A11FC80006575A7 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		3CD4A6891CE4561C0029CE2C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		3CD4A68A1CE4561C0029CE2C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +272,8 @@
 				3CA7D32519E5083F00E44D4D /* ExamViewController.h */,
 				3CA7D32619E5083F00E44D4D /* ExamViewController.m */,
 				3CB55A2F19EF692900DC8777 /* StationInfo.h */,
+				3CD4A6891CE4561C0029CE2C /* MBProgressHUD.h */,
+				3CD4A68A1CE4561C0029CE2C /* MBProgressHUD.m */,
 				3CB55A3019EF692900DC8777 /* StationInfo.m */,
 				3CB55A3219EF694600DC8777 /* UserInfo.h */,
 				3CB55A3319EF694600DC8777 /* UserInfo.m */,
@@ -581,6 +586,7 @@
 				3CBBD5201A42C5A9007104A7 /* ComboxView.m in Sources */,
 				3CA7D32719E5083F00E44D4D /* ExamViewController.m in Sources */,
 				3CAAD8F719F8DB7C00B003B2 /* SCNavigationController.m in Sources */,
+				3CD4A68B1CE4561C0029CE2C /* MBProgressHUD.m in Sources */,
 				3C944D9619D7E9BD007CB4F3 /* AppDelegate.m in Sources */,
 				3CB55A4A19EF78B300DC8777 /* TTCounterLabel.m in Sources */,
 				3C944D9219D7E9BD007CB4F3 /* main.m in Sources */,

@@ -11,12 +11,16 @@
 #import "WTRequestCenter.h"
 #import "RoomInfo.h"
 #import "RMMapper.h"
+#import "MBProgressHUD.h"
 
 @interface SettingController ()
 
 @end
 
 @implementation SettingController
+{
+    MBProgressHUD *HUD;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -159,5 +163,8 @@
     [defaults setObject:_txtServerIP.text forKey:@"IPConfig"];
     [defaults synchronize];
     [self getRoomInfo];
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [HUD setLabelText:@"保存服务器地址成功"];
+    [HUD hide:YES afterDelay:1];
 }
 @end

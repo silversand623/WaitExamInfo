@@ -14,11 +14,13 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
+
 @interface ExamViewController ()
 
 @end
 
 @implementation ExamViewController
+
 #define ROWHEIGHT 60
 #define FONTSIZE 32
 
@@ -191,9 +193,9 @@
                                           ///
                                           
                                           NSString *state = [obj objectForKey:@"UpdateState"];
-                                          NSLog(@"start get exam1111=====%@",state);
+                                          //NSLog(@"start get exam1111=====%@",state);
                                           //if ([state isEqualToString:@"1"] ) {
-                                              NSLog(@"start get getUserInfo ok=====");
+                                              //NSLog(@"start get getUserInfo ok=====");
                                               [self getUserInfo];
                                           //}
                                           
@@ -243,7 +245,7 @@
         }
         [_curTime setStartValue:(hour*60*60+minute*60+second)*1000];
         [_curTime start];
-       NSLog(@"start total time%@=====",Station.SystemTime);
+       //NSLog(@"start total time%@=====",Station.SystemTime);
         //_sChanged = @"未知";
         [[self examSubject] setText:[Station.Curriculum stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         [[self examContent] setText:[Station.Content stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -281,8 +283,9 @@
                                           
                                         
                                         NSString *str = [obj objectForKey:@"result"];
+                                          //NSLog(@"start get userinfo ====%@",str);
                                               if (str != nil) {
-                                              int nResult = [str integerValue];
+                                              int nResult = [str intValue];
                                               if (nResult == 1) {
                                                   
                                                   AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
@@ -335,7 +338,7 @@
                                                   
                                                   
                                                   [[self examTime] setText:[NSString stringWithFormat:@"%@--%@",Info.StuStartTime,Info.StuEndTime]];
-                                                  BOOL bChanged = NO;
+                                                  BOOL bChanged = YES;
                                                   
                                                   if ([Info.StuState isEqualToString:@"评分中"]) {
                                                       NSLog(@"start pingfenzhong====");
@@ -361,7 +364,7 @@
                                                           [[myView txtHit] setHidden:NO];
                                                       }
                                                   }
-                                                  
+                                                  NSLog(@"bchaged, bfresh ====%d",bChanged);
                                                   
                                                   if (bChanged) {
                                                       NSLocale* local =[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
@@ -403,16 +406,20 @@
                                                               }
                                                           }
                                                           
+                                                          
                                                       }
                                                       
-                                                      NSLog(@"dao jishi is ========%d",nSec);
+                                                      
                                                       if (bFreshTag) {
+                                                          NSLog(@"dao jishi is ========%f",nSec);
                                                           if (_remainTime.isRunning) {
                                                               [_remainTime stop];
                                                               
                                                           }
-                                                          [_remainTime setStartValue:nSec*1000];
-                                                          [_remainTime start];
+                                                          
+                                                              [_remainTime setStartValue:nSec*1000];
+                                                              [_remainTime start];
+                                                          
                                                       }
                                                       
                                                       

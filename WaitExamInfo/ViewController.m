@@ -11,13 +11,16 @@
 #import "StationInfo.h"
 #import "RMMapper.h"
 #import "AppDelegate.h"
-
+#import "MBProgressHUD.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+{
+    MBProgressHUD *HUD;
+}
 
 - (void)viewDidLoad
 {
@@ -148,7 +151,9 @@
     
     [params setObject:[defaults objectForKey:@"Room"] forKey:@"RoomName"];
     
-    if (appDelegate.gUID == nil) {
+    if (appDelegate.gUID == nil || [appDelegate.gUID  isEqual: @""]) {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:@"当前不存在学生信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
         return;
     }
     
