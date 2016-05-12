@@ -405,8 +405,11 @@
                                                                   bFreshTag = NO;
                                                               }
                                                           }
-                                                          
-                                                          
+                                                          //NSLog(@"dao jishi is ========%f===%d===%f",fabs(_remainTime.currentValue/1000 - nSec),_remainTime.currentValue/1000,nSec);
+                                                          if (fabs(_remainTime.currentValue/1000 - nSec) <2.0f)
+                                                          {
+                                                              bFreshTag = NO;
+                                                          }
                                                       }
                                                       
                                                       
