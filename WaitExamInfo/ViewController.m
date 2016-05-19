@@ -151,7 +151,7 @@
     
     [params setObject:[defaults objectForKey:@"Room"] forKey:@"RoomName"];
     
-    if (appDelegate.gUID == nil || [appDelegate.gUID  isEqual: @""]) {
+    if (appDelegate.gUID == nil || [appDelegate.gUID  isEqual: @""] || appDelegate.gStationInfo == nil) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:@"当前不存在学生信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
         return;
@@ -198,8 +198,7 @@
                                                ////
                                            }else
                                            {
-                                               NSLog(@"jsonError:%@",jsonError);
-                                               UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"json格式错误" message:[jsonError localizedDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                               UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:@"当前不存在学生信息" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                                                [alert show];
                                            }
                                            

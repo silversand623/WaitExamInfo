@@ -258,6 +258,8 @@
 
 -(void) getUserInfo
 {
+    AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+    appDelegate.gUID = nil;
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     NSMutableDictionary *params=[[NSMutableDictionary alloc] init];
     if ([defaults objectForKey:@"Room"] == nil || [defaults objectForKey:@"IPConfig"]==nil) {
@@ -314,7 +316,7 @@
                                                   NSString *BaseUrl=[defaults objectForKey:@"IPConfig"];
                                                   NSString *url=@"http://";
                                                   url=[url stringByAppendingString:BaseUrl];
-                                                  url=[url stringByAppendingFormat:@"/AppDataInterface/ExamInfoShow.aspx/GetCurrentUserPhoto?U_ID=%@",Info.CurrentUID];
+                                                  url=[url stringByAppendingFormat:@"/AppDataInterface/HandScore.aspx/SearchStudentPhoto?U_ID=%@",Info.CurrentUID];
                                                   NSURL *TempUrl = [NSURL URLWithString:url];
                                                   [WTRequestCenter getImageWithURL:TempUrl completionHandler:^(UIImage *image) {
                                                       if (image != nil) {
