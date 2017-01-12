@@ -13,6 +13,8 @@
 #import "StationInfo.h"
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 
 @interface ExamViewController ()
@@ -364,7 +366,12 @@
                                                           NSString *path = [[NSBundle mainBundle] pathForResource:@"studentphoto" ofType:@"jpg"];
                                                           [[myView curPhoto] setImage:[UIImage imageWithContentsOfFile:path]];
                                                           [[myView txtHit] setHidden:NO];
+                                                          myView.imgPath = NULL;
                                                       }
+                                                      //定义一个SystemSoundID
+                                                      SystemSoundID soundID = 1005;//具体参数详情下面贴出来
+                                                      //播放声音
+                                                      AudioServicesPlaySystemSound(soundID);
                                                   }
                                                   NSLog(@"bchaged, bfresh ====%d",bChanged);
                                                   

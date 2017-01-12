@@ -143,7 +143,14 @@
 {
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     NSMutableDictionary *params=[[NSMutableDictionary alloc] init];
-    if ([defaults objectForKey:@"Room"] == nil || [defaults objectForKey:@"IPConfig"]==nil || _imgPath == nil) {
+    if ([defaults objectForKey:@"Room"] == nil || [defaults objectForKey:@"IPConfig"]==nil ) {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:@"请先设置服务器IP和房间" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }else if(_imgPath == NULL)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"上传图片数据失败" message:@"请先拍照再上传" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
         return;
     }
     
