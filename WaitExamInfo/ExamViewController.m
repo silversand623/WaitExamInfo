@@ -130,6 +130,11 @@
         
     }
     [self clearData];
+    
+    //定义一个SystemSoundID
+    SystemSoundID soundID = 1005;//具体参数详情下面贴出来
+    //播放声音
+    AudioServicesPlaySystemSound(soundID);
 }
 
 -(void)clearData
@@ -359,6 +364,7 @@
                                                   //NSLog(@"清除图片qianqianqianqian===%@====%@===",_sChanged,Info.StuState);
                                                   
                                                   if (![_sChanged isEqualToString:Info.StuState]) {
+                                                      
                                                       _sChanged = Info.StuState;
                                                       //NSLog(@"清除图片===%@====%@===",_sChanged,Info.StuState);
                                                       bChanged = YES;
@@ -368,12 +374,9 @@
                                                           [[myView txtHit] setHidden:NO];
                                                           myView.imgPath = NULL;
                                                       }
-                                                      //定义一个SystemSoundID
-                                                      SystemSoundID soundID = 1005;//具体参数详情下面贴出来
-                                                      //播放声音
-                                                      AudioServicesPlaySystemSound(soundID);
+                                                      
                                                   }
-                                                  NSLog(@"bchaged, bfresh ====%d",bChanged);
+                                                  //NSLog(@"bchaged, bfresh ====%d",bChanged);
                                                   
                                                   if (bChanged) {
                                                       NSLocale* local =[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
@@ -393,7 +396,7 @@
                                                       
                                                       double dInterval = [_curTime currentValue]/1000;
                                                       BOOL bFreshTag = YES;
-                                                      NSLog(@"time interval is ======%f",dInterval);
+                                                      //NSLog(@"time interval is ======%f",dInterval);
                                                       if (dInterval > 0.1) {
                                                           if (nSecExam > 0) {
                                                               second = nSecExam*60+second;
