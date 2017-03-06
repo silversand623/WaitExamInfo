@@ -116,7 +116,7 @@
     //_counterLabel.textColor = [UIColor darkGrayColor];
     [_curTime setDisplayMode:kDisplayModeSeconds];
     _curTime.countDirection = kCountDirectionUp;
-    //_remainTime.countdownDelegate = self;
+    //_curTime.countdownDelegate = self;
     // After making any changes we need to call update appearance
     [_curTime setTextAlignment:NSTextAlignmentLeft];
     [_curTime updateApperance];
@@ -368,6 +368,12 @@
                                                       _sChanged = Info.StuState;
                                                       //NSLog(@"清除图片===%@====%@===",_sChanged,Info.StuState);
                                                       bChanged = YES;
+                                                      if ([Info.StuState isEqualToString:@"评分中"]) {
+                                                          //定义一个SystemSoundID
+                                                          SystemSoundID soundID = 1005;//具体参数详情下面贴出来
+                                                          //播放声音
+                                                          AudioServicesPlaySystemSound(soundID);
+                                                      }
                                                       if ([Info.StuState isEqualToString:@"考试中"]) {
                                                           NSString *path = [[NSBundle mainBundle] pathForResource:@"studentphoto" ofType:@"jpg"];
                                                           [[myView curPhoto] setImage:[UIImage imageWithContentsOfFile:path]];
